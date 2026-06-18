@@ -1,0 +1,135 @@
+﻿/* ============================================
+   المتغيرات العامة - CSS Variables
+   ============================================ */
+   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Noto+Sans+Arabic:wght@100..900&family=Reem+Kufi:wght@400..700&display=swap');
+
+:root {
+    /* ===== الألوان ===== */
+    --color-text: #4b522b;
+    --color-primary: #b93e2e;
+    --color-button: #e99658;
+    --color-button-hover: #d4813a;
+    --color-bg: #f0ece0;
+    --color-section-bg: #e0dcc9;
+    --color-border: #d1c9a0;
+    --color-secondary-text: #6b6548;
+    --color-muted: #9a8f6e;
+    --color-error: #b93e2e;
+    --color-success: #10B981;
+    --color-white: #ffffff;
+    --color-warning: #fbbf24;
+    --color-success: #4ade80;
+    /* ===== التدرجات ===== */
+    --gradient-button: linear-gradient(135deg, #e99658, #d4813a);
+    --gradient-button-hover: linear-gradient(135deg, #d4813a, #c07030);
+    --gradient-badge: linear-gradient(135deg, #b93e2e, #e99658);
+    --gradient-primary: linear-gradient(135deg, #b93e2e, #e99658);
+    --gradient-overlay: rgba(75, 82, 43, 0.6);
+    --gradient-header: linear-gradient(135deg, rgba(185, 62, 46, 0.08), rgba(233, 150, 88, 0.08));
+    --gradient-modal-icon: linear-gradient(135deg, #b93e2e, #e99658);
+
+    /* ===== الظلال ===== */
+    --shadow-card: 0 2px 15px rgba(75, 82, 43, 0.08);
+    --shadow-card-hover: 0 8px 30px rgba(75, 82, 43, 0.15);
+    --shadow-image: 0 4px 15px rgba(75, 82, 43, 0.12);
+    --shadow-button: 0 4px 15px rgba(233, 150, 88, 0.3);
+    --shadow-button-hover: 0 8px 25px rgba(233, 150, 88, 0.4);
+    --shadow-button-strong: 0 8px 30px rgba(233, 150, 88, 0.45);
+    --shadow-button-lift: 0 6px 20px rgba(233, 150, 88, 0.35);
+    --shadow-section: 0 2px 15px rgba(75, 82, 43, 0.08);
+    --shadow-focus: 0 0 0 3px rgba(233, 150, 88, 0.15);
+    --shadow-error: 0 0 0 3px rgba(185, 62, 46, 0.12);
+
+    /* ===== الخطوط ===== */
+    --font-heading: 'Cairo', sans-serif;
+    --font-body: 'Noto Sans Arabic', sans-serif;
+    --font-button: 'Reem Kufi', sans-serif;
+
+    /* ===== أوزان الخطوط ===== */
+    --weight-light: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    --weight-extrabold: 800;
+
+    /* ===== أحجام الخطوط ===== */
+    --fs-xs: 11px;
+    --fs-sm: 12px;
+    --fs-base: 14px;
+    --fs-md: 15px;
+    --fs-lg: 16px;
+    --fs-xl: 18px;
+    --fs-2xl: 22px;
+    --fs-3xl: 26px;
+    --fs-4xl: 28px;
+    --fs-5xl: 30px;
+    --fs-6xl: 64px;
+    --fs-hero: 42px;
+
+    /* ===== المسافات ===== */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 14px;
+    --spacing-lg: 16px;
+    --spacing-xl: 20px;
+    --spacing-2xl: 24px;
+    --spacing-3xl: 30px;
+    --spacing-4xl: 40px;
+
+    /* ===== نصف قطر الزوايا ===== */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 14px;
+    --radius-2xl: 16px;
+    --radius-full: 50%;
+
+    /* ===== الانتقالات ===== */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.4s ease;
+    --transition-modal: 0.4s ease;
+
+    /* ===== القيم الأخرى ===== */
+    --max-width: 1100px;
+    --sidebar-width: 340px;
+    --badge-size: 26px;
+    --badge-size-lg: 30px;
+    --radio-size: 20px;
+    --radio-inner: 10px;
+    --hero-height: 350px;
+    --hero-height-mobile: 250px;
+    --image-height: 220px;
+    --input-min-height: 120px;
+    --table-label-width: 30%;
+}
+/* ============================================
+المتغيرات العالمية للوضع الداكن (Global Dark Vars)
+============================================ */
+[data-bs-theme="dark"] {
+    --color-bg: #121212;
+    --color-white: #1e1e2e;
+    --color-section-bg: #1a1a2e;
+    --color-border: #3a3a5a;
+    --color-input-bg: #252535;
+    
+    --color-text: #f0f0f5;
+    --color-secondary-text: #b0b0c0;
+    --color-muted: #808090;
+    --color-placeholder: #606070;
+    
+    --color-primary: #e94560;
+    --color-primary-hover: #ff6b6b;
+    --color-button: #e94560;
+    --color-button-hover: #ff6b6b;
+    
+    --gradient-primary: linear-gradient(135deg, #e94560, #ff6b6b);
+    --gradient-button: linear-gradient(135deg, #e94560, #c73e54);
+    --gradient-button-hover: linear-gradient(135deg, #ff6b6b, #e94560);
+    --gradient-card: linear-gradient(145deg, #1e1e2e, #252535);
+    
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.7);
+    --shadow-button: 0 4px 12px rgba(233, 69, 96, 0.4);
+    --shadow-focus: 0 0 0 3px rgba(233, 69, 96, 0.4);
+  }
