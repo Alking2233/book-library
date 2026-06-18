@@ -2,7 +2,6 @@
 # Dependencies
 # ============================================
 node_modules/
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
@@ -50,3 +49,7 @@ Thumbs.db
 # إذا كنت تستخدم SQLite:
 # .tmp/data.db
 
+# Strapi backup files
+*.tar
+*.tar.gz
+my-data.tar.gz
