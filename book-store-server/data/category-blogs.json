@@ -1,0 +1,39 @@
+{
+  "categoryBlogs": [
+    {
+      "name": "أدب عربي",
+      "blogTitle": "أفضل 10 روايات عربية يجب أن تقرأها",
+      "imagePath": "assets/category-blogs/arabic-literature.png"
+    },
+    {
+      "name": "مراجعات كتب",
+      "blogTitle": "أفضل 10 روايات عربية يجب أن تقرأها",
+      "imagePath": "assets/category-blogs/book-reviews.png"
+    },
+    {
+      "name": "نصائح قراءة",
+      "blogTitle": "كيف تختار كتابك التالي؟ دليل عملي",
+      "imagePath": "assets/category-blogs/reading-tips.png"
+    },
+    {
+      "name": "تنمية ذاتية - اختيار الكتب",
+      "blogTitle": "كيف تختار كتابك التالي؟ دليل عملي",
+      "imagePath": "assets/category-blogs/self-development.png"
+    },
+    {
+      "name": "صحة وعافية",
+      "blogTitle": "فوائد القراءة اليومية للصحة العقلية",
+      "imagePath": "assets/category-blogs/health-wellness.png"
+    },
+    {
+      "name": "أدب عالمي",
+      "blogTitle": "الواقعية السحرية في أدب غابرييل غارسيا ماركيز",
+      "imagePath": "assets/category-blogs/world-literature.png"
+    },
+    {
+      "name": "تنمية ذاتية - صحة عقلية",
+      "blogTitle": "فوائد القراءة اليومية للصحة العقلية",
+      "imagePath": "assets/category-blogs/self-development-2.png"
+    }
+  ]
+}

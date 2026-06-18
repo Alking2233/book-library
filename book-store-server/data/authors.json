@@ -1,0 +1,114 @@
+{
+  "authors": [
+    {
+      "Name": "باولو كويلو",
+      "Description": "روائي وكاتب برازيلي، يُعد من أشهر الكتاب في العالم، اشتهر برواية الخيميائي التي تُرجمت إلى أكثر من 80 لغة.",
+      "whatsapp": "",
+      "facebook": "paulocoelho",
+      "instagram": "paulocoelho",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "paulocoelho",
+      "image": "assets/authors/paulo-coelho.jpg"
+    },
+    {
+      "Name": "جلال الدين الرومي",
+      "Description": "شاعر وفقيه وفيلسوف صوفي فارسي الأصل، يُعتبر من أعظم شعراء الصوفية في التاريخ، ومؤسس الطريقة المولوية.",
+      "whatsapp": "",
+      "facebook": "",
+      "instagram": "",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/rumi.jpg"
+    },
+    {
+      "Name": "سون تزو",
+      "Description": "قائد عسكري واستراتيجي وفيلسوف صيني، اشتهر بكتابه فن الحرب الذي يُدرس في الأكاديميات العسكرية حول العالم.",
+      "whatsapp": "",
+      "facebook": "",
+      "instagram": "",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/sun-tzu.jpg"
+    },
+    {
+      "Name": "روبن شارما",
+      "Description": "كاتب كندي متخصص في التنمية الذاتية والقيادة، اشتهر بكتبه مثل الراهب الذي باع سيارته الفيراري ونادي الخامسة صباحاً.",
+      "whatsapp": "",
+      "facebook": "RobinSharmaOfficial",
+      "instagram": "therobinsharma",
+      "telegram": "",
+      "linkedin": "robinsharma",
+      "youtube": "RobinSharma",
+      "image": "assets/authors/robin-sharma.jpg"
+    },
+    {
+      "Name": "يوفال نوح هراري",
+      "Description": "مؤرخ وكاتب إسرائيلي، اشتهر بكتبه سابنس، وهومو ديوس، و21 درساً للقرن الحادي والعشرين.",
+      "whatsapp": "",
+      "facebook": "YuvalNoahHarari",
+      "instagram": "yuvalnoahharari",
+      "telegram": "",
+      "linkedin": "yuval-noah-harari",
+      "youtube": "",
+      "image": "assets/authors/yuval-harari.jpg"
+    },
+    {
+      "Name": "إليف شافق",
+      "Description": "روائية تركية بريطانية، تُعتبر من أشهر الروائيات التركيات، اشتهرت برواية قواعد العشق الأربعون.",
+      "whatsapp": "",
+      "facebook": "ElifShafak",
+      "instagram": "elifsafakofficial",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/elif-shafak.jpeg"
+    },
+    {
+      "Name": "نجيب محفوظ",
+      "Description": "روائي مصري، أول عربي حائز على جائزة نوبل في الأدب، من أشهر أعماله الثلاثية وأولاد حارتنا.",
+      "whatsapp": "",
+      "facebook": "",
+      "instagram": "",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/naguib-mahfouz.jpg"
+    },
+    {
+      "Name": "غسان كنفاني",
+      "Description": "كاتب وأديب فلسطيني، من أهم كتاب القصة القصيرة والرواية في الأدب العربي، اشتهر برواية رجال في الشمس.",
+      "whatsapp": "",
+      "facebook": "",
+      "instagram": "",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/ghassan-kanafani.jpg"
+    },
+    {
+      "Name": "غابرييل غارسيا ماركيز",
+      "Description": "روائي وكاتب وصحفي كولومبي، حصل على جائزة نوبل في الأدب عام 1982، يُعتبر من أهم كتاب الواقعية السحرية، اشتهر برواية مائة عام من العزلة.",
+      "whatsapp": "",
+      "facebook": "GabrielGarciaMarquez",
+      "instagram": "",
+      "telegram": "",
+      "linkedin": "",
+      "youtube": "",
+      "image": "assets/authors/gabriel-marquez.jpg"
+    },
+    {
+      "Name": "روبرت غرين",
+      "Description": "كاتب أمريكي متخصص في الاستراتيجيا والقوة، اشتهر بكتبه 48 قانوناً للقوة، وفن الإغراء، وقوانين الطبيعة البشرية.",
+      "whatsapp": "",
+      "facebook": "RobertGreenePower",
+      "instagram": "robertgreeneofficial",
+      "telegram": "",
+      "linkedin": "robert-greene",
+      "youtube": "",
+      "image": "assets/authors/robert-greene.jpg"
+    }
+  ]
+}

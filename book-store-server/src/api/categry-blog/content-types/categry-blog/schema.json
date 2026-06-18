@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categry_blogs",
+  "info": {
+    "singularName": "categry-blog",
+    "pluralName": "categry-blogs",
+    "displayName": "Category_blog"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "blog": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::blog.blog",
+      "inversedBy": "category_blogs"
+    }
+  }
+}

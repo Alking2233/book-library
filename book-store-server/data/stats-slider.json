@@ -1,0 +1,18 @@
+﻿{
+    "sliders": [
+      {
+        "Title": "إحصائيات المكتبة",
+        "SubTitle": "أرقام تتحدث عن ثقة عملائنا ونمو مجتمع القراءة",
+        "Description": "نفتخر بخدمة أكثر من 50 ألف قارئ، وتقديم مكتبة تضم آلاف العناوين في مختلف المجالات. أرقامنا تعكس التزامنا بتوفير تجربة قراءة فريدة وموثوقة.",
+        "btnText1": "استكشف الأرقام",
+        "btnLink1": "/statistics",
+        "btnText2": "انضم إلينا",
+        "btnLink2": "/register",
+        "hero_img": "./assets/images/slider-stats-hero.jpg",
+        "bg_light": "./assets/images/slider-stats-bg-light.jpg",
+        "bg_dark": "./assets/images/slider-stats-bg-dark.png",
+        "shape1": null,
+        "shape2": null
+      }
+    ]
+  }

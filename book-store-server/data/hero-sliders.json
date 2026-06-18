@@ -1,0 +1,49 @@
+{
+  "sliders": [
+    {
+      "title": "نرشح لك هذا الأسبوع",
+      "subtitle": "أحدث الإصدارات الأدبية",
+      "description": "تشكيلة مميزة من الروايات والكتب الفكرية",
+      "buttontext": "تصفح القائمة",
+      "buttonlink": "/books",
+      "order": 1,
+      "imagePath": "assets/images/hero-slide1.avif"
+    },
+    {
+      "title": "خصومات الجمعة البيضاء",
+      "subtitle": "تصل إلى 60%",
+      "description": "من 12 إلى 30 نوفمبر",
+      "buttontext": "تسوق العروض",
+      "buttonlink": "/offers",
+      "order": 2,
+      "imagePath": "assets/images/hero-slide2.avif"
+    },
+    {
+      "title": "أحدث الإصدارات",
+      "subtitle": "لأطفالكم الصغار",
+      "description": "قصص تعليمية وترفيهية بألوان جذابة",
+      "buttontext": "اكتشف المزيد",
+      "buttonlink": "/kids",
+      "order": 3,
+      "imagePath": "assets/images/hero-slide3.avif"
+    },
+    {
+      "title": "الروايات العالمية",
+      "subtitle": "روائع الأدب المترجم",
+      "description": "رحلات فكرية عبر ثقافات العالم",
+      "buttontext": "اقرأ الآن",
+      "buttonlink": "/global",
+      "order": 4,
+      "imagePath": "assets/images/hero-slide4.avif"
+    },
+    {
+      "title": "تنمية الذات",
+      "subtitle": "استثمر في نفسك",
+      "description": "كتب ملهمة لتطوير مهاراتك وشخصيتك",
+      "buttontext": "تصفح القسم",
+      "buttonlink": "/self-dev",
+      "order": 5,
+      "imagePath": "assets/images/hero-slide5.webp"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+import-blogs.js
+const fs = require('fs');
+const path = require('path');
+const axios = require('axios');
+const FormData = require('form-data');
+
+const STRAPI_URL = 'http://localhost:1337/api';
+const API_TOKEN = 'YOUR_STRAPI_API_TOKEN'; // ⚠️ ضع التوكن الخاص بك هنا
+
+// ✅ دالة رفع الصورة
+async function uploadImage(imagePath) {
+  if (!imagePath) return null;
+  
+  const absolutePath = path.join(process.cwd(), imagePath);
+  console.log(` البحث عن: ${absolutePath}`);
+  
+  if (!fs.existsSync(absolutePath)) {
+    console.warn(`⚠️ الصورة غير موجودة، سيتم تخطي رفعها`);
+    return null;
+  }
+
+  const formData = new FormData();
+  formData.append('files', fs.createReadStream(absolutePath));
+
+  try {
+    const res = await axios.post(`${STRAPI_URL}/upload`, formData, {
+      headers: { ...formData.getHeaders(), 'Authorization': `Bearer ${API_TOKEN}` }
+    });
+    console.log(`✅ تم رفع الصورة بنجاح (ID: ${res.data[0].id})`);
+    return res.data[0].id;
+  } catch (error) {
+    console.error(`❌ فشل رفع الصورة:`, error.message);
+    return null;
+  }
+}
+
+// ✅ الدالة الرئيسية للاستيراد
+async function importBlogs() {
+  try {
+    // 1. جلب المؤلفين
+    console.log('📚 الخطوة 1: جلب المؤلفين...');
+    const authorsRes = await axios.get(`${STRAPI_URL}/authors`, {
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+    });
+    const authors = authorsRes.data.data;
+    console.log(`✅ تم جلب ${authors.length} مؤلف\n`);
+
+    // 2. جلب التصنيفات (Category_blog)
+    console.log(' الخطوة 2: جلب تصنيفات المدونات...');
+    const categoriesRes = await axios.get(`${STRAPI_URL}/category-blogs`, {
+      headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+    });
+    const categories = categoriesRes.data.data;
+    console.log(`✅ تم جلب ${categories.length} تصنيف\n`);
+
+    // إنشاء خريطة للأسماء لسهولة البحث
+    const categoryMap = {};
+    categories.forEach(cat => {
+      categoryMap[cat.name] = cat.id;
+    });
+
+    // 3. قراءة ملف المدونات
+    const jsonPath = path.join(__dirname, '..', 'data', 'blogs.json');
+    console.log(`📖 الخطوة 3: قراءة ملف المدونات من: ${jsonPath}`);
+    const { blogs } = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    console.log(`🚀 بدء استيراد ${blogs.length} مدونة...\n`);
+
+    // 4. استيراد كل مدونة
+    for (const blog of blogs) {
+      console.log(`📝 معالجة: ${blog.Title}`);
+
+      // رفع الصورة
+      const imageId = await uploadImage(blog.imagePath);
+
+      // البحث عن المؤلف
+      const author = authors.find(a => a.Name === blog.authorName);
+      if (author) {
+        console.log(`👤 المؤلف: ${author.Name}`);
+      } else {
+        console.warn(`⚠️ لم يتم العثور على المؤلف: ${blog.authorName}`);
+      }
+
+      // البحث عن التصنيفات
+      const blogCategoryIds = blog.categoryNames
+        .map(name => categoryMap[name])
+        .filter(id => id);
+      
+      if (blogCategoryIds.length > 0) {
+        console.log(`🏷️ التصنيفات: ${blog.categoryNames.join(', ')}`);
+      } else {
+        console.warn(`⚠️ لم يتم العثور على التصنيفات: ${blog.categoryNames.join(', ')}`);
+      }
+
+      // تجهيز البيانات
+      const payload = {
+        data: {
+          Title: blog.Title,
+          Description: blog.Description,
+          content: blog.content,
+        }
+      };
+
+      // ربط الصورة
+      if (imageId) {
+        payload.data.image = { connect: [imageId] };
+      }
+
+      // ربط المؤلف
+      if (author) {
+        payload.data.author = { connect: [author.id] };
+      }
+
+      // ربط التصنيفات
+      if (blogCategoryIds.length > 0) {
+        payload.data.category_blogs = { connect: blogCategoryIds };
+      }
+
+      // إرسال الطلب لإنشاء المدونة
+      const response = await axios.post(`${STRAPI_URL}/blogs`, payload, {
+        headers: { 
+          'Authorization': `Bearer ${API_TOKEN}`, 
+          'Content-Type': 'application/json' 
+        }
+      });
+
+      console.log(`✅ تم إضافة: ${blog.Title} (ID: ${response.data.data.id})\n`);
+    }
+
+    console.log('🎉 اكتمل استيراد المدونات بنجاح!');
+    console.log('\n📌 الخطوة التالية: شغّل import-category-blogs.js لربط التصنيفات بالمدونات');
+  } catch (error) {
+    console.error('💥 خطأ فادح:', error.response?.data?.error?.message || error.message);
+    if (error.response?.data?.error?.details) {
+      console.error('📋 التفاصيل:', JSON.stringify(error.response.data.error.details, null, 2));
+    }
+  }
+}
+
+// ✅ تشغيل السكريبت
+importBlogs();
