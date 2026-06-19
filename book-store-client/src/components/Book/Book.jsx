@@ -40,11 +40,11 @@ function Book({ book }) {
     const imageUrl = useMemo(() => {
         // Strapi v4 - مع populate
         if (bookData?.image?.data?.attributes?.url) {
-            return `http://localhost:1337${bookData.image.data.attributes.url}`;
+            return `${import.meta.env.VITE_API_URL || "http://localhost:1337"}${bookData.image.data.attributes.url}`;
         }
         // Strapi v5 - flat structure
         if (bookData?.image?.url) {
-            return `http://localhost:1337${bookData.image.url}`;
+            return `${import.meta.env.VITE_API_URL || "http://localhost:1337"}${bookData.image.url}`;
         }
         // Fallback محلي (يجب وضع صورة في public/)
         return "/default-book.jpg";

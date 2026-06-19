@@ -5,12 +5,13 @@ import './category.css';
 function Category({ category, index = 0 }) {
     // استخراج البيانات
     const categoryData = category?.attributes || category;
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
 
     // معالجة رابط الصورة
     const imageUrl = categoryData?.image?.data?.attributes?.url 
-        ? `http://localhost:1337${categoryData.image.data.attributes.url}`
+        ? `${API_URL}${categoryData.image.data.attributes.url}`
         : categoryData?.image?.url 
-            ? `http://localhost:1337${categoryData.image.url}`
+            ? `${API_URL}${categoryData.image.url}`
             : null;
 
     // حساب عدد الكتب

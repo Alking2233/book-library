@@ -14,7 +14,7 @@ import "./Blog.css";
 // 🔧 الثوابت
 // ============================================================================
 
-const API_URL = "http://localhost:1337";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
 const DEFAULT_IMAGE = "/images/backgrounds/blog-bg.jpg"; // ✅ المسار الصحيح من public/
 
 function Blog({ blog, variant = "default" }) {

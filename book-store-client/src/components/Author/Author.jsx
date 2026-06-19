@@ -11,7 +11,7 @@ import {
 
 import "./Author.css";
 
-const API_URL = "http://localhost:1337";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
 
 function Author({ author }) {
     const [imageError, setImageError] = useState(false);

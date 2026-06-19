@@ -158,8 +158,9 @@ function Hero() {
                 className="hero-swiper"
               >
                 {sliders.map((slide) => {
+                  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
                   const bgUrl = slide.BackgroundImage?.url
-                    ? `http://localhost:1337${slide.BackgroundImage.url}`
+                    ? `${API_URL}${slide.BackgroundImage.url}`
                     : "/default-hero.jpg";
 
                   return (
@@ -212,8 +213,9 @@ function Hero() {
             <div className="hero-featured-grid">
               {featuredBooks.map((book) => {
                 const bookData = book?.attributes || book;
+                const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
                 const coverUrl = bookData?.image?.url
-                  ? `http://localhost:1337${bookData.image.url}`
+                  ? `${API_URL}${bookData.image.url}`
                   : "/default-book.jpg";
 
                 return (

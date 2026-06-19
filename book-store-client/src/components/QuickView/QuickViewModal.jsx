@@ -48,11 +48,13 @@ function QuickViewModal() {
     
     // ===== رابط الصورة =====
     const imageUrl = useMemo(() => {
+        const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337"; 
         if (book?.image?.data?.attributes?.url) {
-            return `http://localhost:1337${book.image.data.attributes.url}`;
+            return `${API_URL}${book.image.data.attributes.url}`;
         }
         if (book?.image?.url) {
-            return `http://localhost:1337${book.image.url}`;
+
+            return `${API_URL}${book.image.url}`;
         }
         return "/default-book.jpg";
     }, [book]);

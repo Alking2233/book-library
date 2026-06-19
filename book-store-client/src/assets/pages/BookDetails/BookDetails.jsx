@@ -32,7 +32,7 @@ import StarRating from "../../../components/StarRating/StarRating";
 
 import "./BookDetails.css";
 
-const API_URL = "http://localhost:1337";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
 const DEFAULT_IMAGE = "/images/defaults/default-book.jpg";
 
 function BookDetails() {
