@@ -27,6 +27,7 @@ dist-ssr
 .env
 .env.local
 .env.*.local
-
+# Allow .env.production for Vercel
+!.env.production
 # OS
 Thumbs.db
