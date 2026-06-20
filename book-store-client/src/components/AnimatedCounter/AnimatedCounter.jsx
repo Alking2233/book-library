@@ -2,12 +2,6 @@
 
 /**
  * مكون عرض رقم متحرك
- * 
- * @param {number} end - الرقم النهائي
- * @param {string} suffix - علامة بعد الرقم مثل "+" أو ""
- * @param {boolean} useK - استخدام K للآلاف (افتراضي: true)
- * @param {number} duration - مدة الانيميشن
- * @param {number} decimals - عدد الأرقام بعد الفاصلة
  */
 function AnimatedCounter({ 
     end, 
@@ -23,7 +17,15 @@ function AnimatedCounter({
         : `${count.toFixed(decimals)}${suffix}`;
 
     return (
-        <span ref={ref} className="animated-counter">
+        <span 
+            ref={ref} 
+            className="animated-counter"
+            style={{ 
+                direction: 'ltr', 
+                display: 'inline-block',
+                unicodeBidi: 'isolate'
+            }}
+        >
             {displayValue}
         </span>
     );
