@@ -1,8 +1,9 @@
-﻿/* ============================================
+﻿```css
+/* ============================================
    📚 Books Section - تصميم احترافي
    ============================================ */
 
-   .books-container {
+.books-container {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
@@ -108,9 +109,9 @@
    📦 شبكة الكتب
    ============================================ */
 
-   .books-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important; 
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--spacing-lg);
     align-items: stretch;
     width: 100%;
@@ -412,10 +413,10 @@
 
 /* Large Tablets */
 @media (max-width: 1200px) {
-  .books-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-      gap: var(--spacing-md) !important;
-  }
+    .books-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--spacing-md);
+    }
 }
 
 /* Tablets */
@@ -424,18 +425,18 @@
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .books-filters-tabs {
         justify-content: center;
         overflow-x: auto;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }
-    
+
     .books-filters-tabs::-webkit-scrollbar {
         display: none;
     }
-    
+
     .books-view-all {
         justify-content: center;
     }
@@ -444,41 +445,41 @@
 /* Mobile */
 @media (max-width: 768px) {
     .books-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) ;
-      gap: var(--spacing-md);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-md);
     }
-    
+
     .book-skeleton {
         min-height: 440px;
     }
-    
+
     .book-skeleton-cover {
         height: 240px;
     }
-    
+
     .books-filter-tab {
         padding: var(--spacing-xs) var(--spacing-sm);
         font-size: var(--fs-xs);
     }
-    
+
     .books-filter-tab span {
         display: none;
     }
-    
+
     .books-filter-tab .books-filter-icon {
         font-size: var(--fs-base);
     }
-    
+
     .books-load-more-btn {
         width: 100%;
         justify-content: center;
     }
-    
+
     .books-state {
         padding: var(--spacing-2xl) var(--spacing-md);
         min-height: 300px;
     }
-    
+
     .books-state-icon {
         width: 60px;
         height: 60px;
@@ -489,16 +490,16 @@
 /* Small Mobile */
 @media (max-width: 480px) {
     .books-grid {
-        display: flex !important;
-        flex-wrap: wrap !important; /* السماح بنزول البطاقات لسطر جديد */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-sm);
     }
-    
-    /* استهداف بطاقات الكتب داخل الحاوية */
-    .books-grid > div, 
-    .books-grid > .book-card,
-    .books-grid > article {
-        width: 48% !important; /* إجبار البطاقة على أخذ نصف الشاشة تقريباً (عمودين) */
-        flex: 0 0 48% !important;
+
+    .book-skeleton {
+        min-height: 380px;
+    }
+
+    .book-skeleton-cover {
+        height: 200px;
     }
 }
-
+```
