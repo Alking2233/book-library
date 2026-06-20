@@ -48,7 +48,10 @@ function QuickViewModal() {
     
     // ===== رابط الصورة =====
     const imageUrl = useMemo(() => {
-        const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337"); 
+        const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337"); 
         if (book?.image?.data?.attributes?.url) {
             return `${API_URL}${book.image.data.attributes.url}`;
         }

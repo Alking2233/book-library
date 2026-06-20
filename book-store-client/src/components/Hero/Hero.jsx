@@ -158,7 +158,10 @@ function Hero() {
                 className="hero-swiper"
               >
                 {sliders.map((slide) => {
-                  const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337");
+                  const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337");
                   const bgUrl = slide.BackgroundImage?.url
                     ? `${API_URL}${slide.BackgroundImage.url}`
                     : "/default-hero.jpg";
@@ -213,7 +216,10 @@ function Hero() {
             <div className="hero-featured-grid">
               {featuredBooks.map((book) => {
                 const bookData = book?.attributes || book;
-                const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337");
+                const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337");
                 const coverUrl = bookData?.image?.url
                   ? `${API_URL}${bookData.image.url}`
                   : "/default-book.jpg";

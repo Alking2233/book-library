@@ -5,7 +5,10 @@ import './category.css';
 function Category({ category, index = 0 }) {
     // استخراج البيانات
     const categoryData = category?.attributes || category;
-    const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337");
+    const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337");
 
     // معالجة رابط الصورة
     const imageUrl = categoryData?.image?.data?.attributes?.url 

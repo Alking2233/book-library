@@ -25,7 +25,10 @@ import {
 import { getBlogDetails, clearBlogDetails } from "../../../store/BlogDetailsSlice";
 import "./BlogDetails.css";
 
-const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337");
+const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337");
 const DEFAULT_HERO = "/images/backgrounds/blog-bg.jpg";
 
 function BlogDetails() {

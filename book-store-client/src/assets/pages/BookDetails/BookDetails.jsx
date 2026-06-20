@@ -32,7 +32,10 @@ import StarRating from "../../../components/StarRating/StarRating";
 
 import "./BookDetails.css";
 
-const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? "https://book-library-api-glv2.onrender.com" : "http://localhost:1337");
+const API_URL = import.meta.env.VITE_API_URL || 
+    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
+        ? "https://book-library-api-glv2.onrender.com" 
+        : "http://localhost:1337");
 const DEFAULT_IMAGE = "/images/defaults/default-book.jpg";
 
 function BookDetails() {
