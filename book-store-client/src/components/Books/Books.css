@@ -489,48 +489,16 @@
 /* Small Mobile */
 @media (max-width: 480px) {
     .books-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-      gap: 12px;
-      padding-inline: 8px;
+        display: flex !important;
+        flex-wrap: wrap !important; /* السماح بنزول البطاقات لسطر جديد */
     }
     
-    .book-skeleton {
-        min-height: 280px;
-    }
-    
-    .book-skeleton-cover {
-        height: 180px;
-    }
-    
-    .books-filters-tabs {
-        gap: 4px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        scrollbar-width: none; 
-    }
-
-    .books-filters-tabs::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .books-filter-tab {
-        padding: 6px 10px;
-        white-space: nowrap;
-        font-size: 0.875rem;
-    }
-
-    .book-card {
-        padding: 8px;
-    }
-    .book-title {
-        font-size: 0.875rem;
-        line-height: 1.2;
-    }
-    .book-author {
-        font-size: 0.75rem;
-    }
-    .books-filter-tab {
-        padding: var(--spacing-xs);
+    /* استهداف بطاقات الكتب داخل الحاوية */
+    .books-grid > div, 
+    .books-grid > .book-card,
+    .books-grid > article {
+        width: 48% !important; /* إجبار البطاقة على أخذ نصف الشاشة تقريباً (عمودين) */
+        flex: 0 0 48% !important;
     }
 }
 
