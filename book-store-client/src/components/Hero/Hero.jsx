@@ -13,7 +13,6 @@ import {
 import { FaStar as HiSparkles } from "react-icons/fa";
 import { getAllHeroSliders } from "../../store/HeroSlider/heroSliderSlice";
 import { getAllBooks } from "../../store/BooksSlice";
-import AnimatedCounter from "../AnimatedCounter/AnimatedCounter";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -93,14 +92,15 @@ function Hero() {
             </div>
 
             {/* إحصائيات مع تأثير العد */}
+            {/* إحصائيات */}
             <div className="hero-stats">
               <div className="hero-stat">
                 <div className="hero-stat-icon">
                   <FaBookOpen />
                 </div>
                 <div className="hero-stat-info">
-                  <span className="hero-stat-number">
-                    <AnimatedCounter end={50000} suffix="+" duration={2500} />
+                  <span className="hero-stat-number" dir="ltr">
+                    +50K
                   </span>
                   <span className="hero-stat-label">كتاب</span>
                 </div>
@@ -111,8 +111,8 @@ function Hero() {
                   <FaUsers />
                 </div>
                 <div className="hero-stat-info">
-                  <span className="hero-stat-number">
-                    <AnimatedCounter end={10000} suffix="+" duration={2500} />
+                  <span className="hero-stat-number" dir="ltr">
+                    +10K
                   </span>
                   <span className="hero-stat-label">قارئ</span>
                 </div>
@@ -123,13 +123,8 @@ function Hero() {
                   <FaStar />
                 </div>
                 <div className="hero-stat-info">
-                  <span className="hero-stat-number">
-                    <AnimatedCounter
-                      end={4.9}
-                      useK={false}
-                      decimals={1}
-                      duration={2000}
-                    />
+                  <span className="hero-stat-number" dir="ltr">
+                    4.9
                   </span>
                   <span className="hero-stat-label">تقييم</span>
                 </div>
@@ -158,10 +153,12 @@ function Hero() {
                 className="hero-swiper"
               >
                 {sliders.map((slide) => {
-                  const API_URL = import.meta.env.VITE_API_URL || 
-    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
-        ? "https://book-library-api-glv2.onrender.com" 
-        : "http://localhost:1337");
+                  const API_URL =
+                    import.meta.env.VITE_API_URL ||
+                    (typeof window !== "undefined" &&
+                    window.location.hostname !== "localhost"
+                      ? "https://book-library-api-glv2.onrender.com"
+                      : "http://localhost:1337");
                   const bgUrl = slide.BackgroundImage?.url
                     ? `${API_URL}${slide.BackgroundImage.url}`
                     : "/default-hero.jpg";
@@ -216,10 +213,12 @@ function Hero() {
             <div className="hero-featured-grid">
               {featuredBooks.map((book) => {
                 const bookData = book?.attributes || book;
-                const API_URL = import.meta.env.VITE_API_URL || 
-    (typeof window !== 'undefined' && window.location.hostname !== 'localhost' 
-        ? "https://book-library-api-glv2.onrender.com" 
-        : "http://localhost:1337");
+                const API_URL =
+                  import.meta.env.VITE_API_URL ||
+                  (typeof window !== "undefined" &&
+                  window.location.hostname !== "localhost"
+                    ? "https://book-library-api-glv2.onrender.com"
+                    : "http://localhost:1337");
                 const coverUrl = bookData?.image?.url
                   ? `${API_URL}${bookData.image.url}`
                   : "/default-book.jpg";
