@@ -1,6 +1,6 @@
 ﻿import { Link } from 'react-router-dom';
 import { FaBook, FaArrowLeft, FaThLarge } from 'react-icons/fa';
-import './category.css';
+import './Category.css';
 
 function Category({ category, index = 0 }) {
     // استخراج البيانات

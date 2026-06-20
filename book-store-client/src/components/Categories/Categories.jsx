@@ -7,7 +7,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import Category from '../Category/Category';
 import { getAllCategories } from '../../store/categoriesSlice';
 
-import './categories.css';
+import './Categories.css';
 
 function Categories({ showAll = false, maxItems = 6 }) {
     const dispatch = useDispatch();
