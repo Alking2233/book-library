@@ -529,8 +529,8 @@
     .book-author {
         font-size: 0.75rem;
     }
-}
     .books-filter-tab {
         padding: var(--spacing-xs);
     }
 }
+
