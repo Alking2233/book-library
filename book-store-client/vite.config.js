@@ -6,5 +6,8 @@ export default defineConfig({
   server: {
     open: '/',
     port: 5173,
-  }
+  },
+  build: {
+    chunkSizeWarningLimit: 1500, // زيادة الحد إلى 1000 KB
+  },
 })
