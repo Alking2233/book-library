@@ -5,7 +5,8 @@
 // ============================================================================
 
 // ===== الإعدادات الأساسية =====
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:1337";
+const API_URL = import.meta.env.VITE_API_URL || 
+    (import.meta.env.DEV ? "http://localhost:1337" : "https://book-library-api-glv2.onrender.com");
 const API_BASE = `${API_URL}/api`;
 const API_TIMEOUT = 15000; // 15 ثانية
 
