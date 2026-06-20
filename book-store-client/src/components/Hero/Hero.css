@@ -248,7 +248,20 @@
     font-size: var(--fs-xl);
     font-weight: var(--weight-bold);
     color: var(--color-text);
+    /* إصلاح نهائي للأرقام */
+    direction: ltr !important;
+    text-align: center !important;
+    display: inline-block !important;
 }
+
+.hero-stat-number span,
+.hero-stat-number .animated-counter,
+.animated-counter {
+    direction: ltr !important;
+    unicode-bidi: embed !important;
+    display: inline-block !important;
+}
+
 
 .hero-stat-label {
     font-size: var(--fs-xs);
