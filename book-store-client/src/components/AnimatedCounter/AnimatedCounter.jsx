@@ -1,8 +1,5 @@
 ﻿import { useCountUp, formatNumber } from '../../hooks/useCountUp';
 
-/**
- * مكون عرض رقم متحرك
- */
 function AnimatedCounter({ 
     end, 
     suffix = '', 
@@ -12,21 +9,22 @@ function AnimatedCounter({
 }) {
     const { count, ref } = useCountUp(end, duration);
 
-    const displayValue = useK 
-        ? formatNumber(count, suffix)
-        : `${count.toFixed(decimals)}${suffix}`;
+    const numberPart = useK 
+        ? formatNumber(count, '')
+        : count.toFixed(decimals);
 
     return (
         <span 
             ref={ref} 
             className="animated-counter"
+            dir="ltr"
             style={{ 
-                direction: 'ltr', 
+                direction: 'ltr',
                 display: 'inline-block',
-                unicodeBidi: 'isolate'
+                unicodeBidi: 'bidi-override'
             }}
         >
-            {displayValue}
+            <bdi>{numberPart}{suffix}</bdi>
         </span>
     );
 }
