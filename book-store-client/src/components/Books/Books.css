@@ -14,7 +14,7 @@
    ============================================ */
 
 .books-header {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
 }
 

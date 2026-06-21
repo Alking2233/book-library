@@ -23,18 +23,16 @@ function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     
-    // ===== 🆕 State للعدّادات =====
     const [cartCount, setCartCount] = useState(0);
     const [wishlistCount, setWishlistCount] = useState(0);
     
     const navigate = useNavigate();
     const { theme, toggleTheme } = useContext(ThemeContext);
     
-    // ===== 🆕 قراءة Cart و Wishlist من localStorage =====
+    // Cart & Wishlist counts
     useEffect(() => {
         const updateCounts = () => {
             try {
-                // Cart count
                 const cart = JSON.parse(localStorage.getItem("cart") || "[]");
                 const totalCart = cart.reduce(
                     (sum, item) => sum + (item.quantity || 0),
@@ -42,7 +40,6 @@ function Navbar() {
                 );
                 setCartCount(totalCart);
                 
-                // Wishlist count
                 const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
                 setWishlistCount(wishlist.length);
             } catch {
@@ -51,13 +48,8 @@ function Navbar() {
             }
         };
         
-        // قراءة أولية
         updateCounts();
-        
-        // الاستماع لتغييرات localStorage (من tabs أخرى)
         window.addEventListener("storage", updateCounts);
-        
-        // الاستماع لحدث مخصص (من نفس التبويب)
         window.addEventListener("cartUpdated", updateCounts);
         window.addEventListener("wishlistUpdated", updateCounts);
         
@@ -95,13 +87,16 @@ function Navbar() {
     
     return (
         <header className={`main-header ${isScrolled ? 'scrolled' : ''}`}>
-            <nav className="main-navbar">
+            {/* ============================
+                🔝 TOP ROW: Logo + Search + Actions
+                ============================ */}
+            <div className="navbar-top">
                 <div className="navbar-container">
                     
                     {/* Logo */}
                     <Link to="/" className="navbar-brand" onClick={closeMobileMenu}>
-                        <img src={logoImg} alt="مكتبتي" className="navbar-logo" />
-                        <span className="brand-text">مكتبتي</span>
+                        <img src={logoImg} alt="شروق المعرفة" className="navbar-logo" />
+                        <span className="brand-text">شروق المعرفة</span>
                     </Link>
                     
                     {/* Search Bar (Desktop) */}
@@ -133,7 +128,52 @@ function Navbar() {
                         </div>
                     </form>
                     
-                    {/* Nav Links (Desktop) */}
+                    {/* Action Icons */}
+                    <div className="navbar-actions">
+                        <button 
+                            className="action-btn theme-toggle"
+                            onClick={toggleTheme}
+                            aria-label="تبديل الوضع"
+                            title={theme === "light" ? "الوضع الليلي" : "الوضع النهاري"}
+                        >
+                            {theme === "light" ? <FaMoon /> : <FaSun />}
+                        </button>
+                        
+                        <Link to="/account" className="action-btn" aria-label="المفضلة" title="المفضلة">
+                            <FaHeart />
+                            {wishlistCount > 0 && (
+                                <span className="badge-count">{wishlistCount}</span>
+                            )}
+                        </Link>
+                        
+                        <Link to="/cart" className="action-btn" aria-label="السلة" title="السلة">
+                            <FaShoppingCart />
+                            {cartCount > 0 && (
+                                <span className="badge-count">{cartCount}</span>
+                            )}
+                        </Link>
+                        
+                        <Link to="/account" className="action-btn" aria-label="حسابي" title="حسابي">
+                            <FaUser />
+                        </Link>
+                        
+                        <button 
+                            className="mobile-menu-toggle"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            aria-label="فتح القائمة"
+                            aria-expanded={isMobileMenuOpen}
+                        >
+                            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            {/* ============================
+                🔻 BOTTOM ROW: Nav Links
+                ============================ */}
+            <div className="navbar-bottom">
+                <div className="navbar-container">
                     <ul className="nav-links-desktop">
                         {navLinks.map((link) => {
                             const Icon = link.icon;
@@ -153,52 +193,8 @@ function Navbar() {
                             );
                         })}
                     </ul>
-                    
-                    {/* Action Icons */}
-                    <div className="navbar-actions">
-                        {/* Theme Toggle */}
-                        <button 
-                            className="action-btn theme-toggle"
-                            onClick={toggleTheme}
-                            aria-label={`تبديل إلى الوضع ${theme === "light" ? "الليلي" : "النهاري"}`}
-                            title={theme === "light" ? "الوضع الليلي" : "الوضع النهاري"}
-                        >
-                            {theme === "light" ? <FaMoon /> : <FaSun />}
-                        </button>
-                        
-                        {/* Wishlist */}
-                        <Link to="/account" className="action-btn" aria-label="المفضلة" title="المفضلة">
-                            <FaHeart />
-                            {wishlistCount > 0 && (
-                                <span className="badge-count">{wishlistCount}</span>
-                            )}
-                        </Link>
-                        
-                        {/* Cart */}
-                        <Link to="/cart" className="action-btn" aria-label="السلة" title="السلة">
-                            <FaShoppingCart />
-                            {cartCount > 0 && (
-                                <span className="badge-count">{cartCount}</span>
-                            )}
-                        </Link>
-                        
-                        {/* User Account */}
-                        <Link to="/account" className="action-btn" aria-label="حسابي" title="حسابي">
-                            <FaUser />
-                        </Link>
-                        
-                        {/* Mobile Menu Toggle */}
-                        <button 
-                            className="mobile-menu-toggle"
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            aria-label="فتح القائمة"
-                            aria-expanded={isMobileMenuOpen}
-                        >
-                            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-                        </button>
-                    </div>
                 </div>
-            </nav>
+            </div>
             
             {/* Mobile Menu */}
             <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>

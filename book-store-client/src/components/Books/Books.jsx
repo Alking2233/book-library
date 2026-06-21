@@ -24,30 +24,24 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
 
   const { data, isLoading, error } = useSelector((state) => state.books);
 
-  // ✅ فلتر الكتب
   const [activeFilter, setActiveFilter] = useState("all");
 
   useEffect(() => {
     dispatch(getAllBooks());
   }, [dispatch]);
 
-  // ✅ تحديد ما إذا كنا في صفحة /books
   const isBooksPage = location.pathname === "/books";
   const shouldShowLoadMore = showLoadMore && !isBooksPage && data?.length > 8;
 
-  // ✅ فلترة الكتب حسب الفلتر النشط
   const filteredBooks = useMemo(() => {
     if (!data) return [];
-
     let filtered = [...data];
 
     switch (activeFilter) {
       case "newest":
-        // ترتيب بالأحدث (افتراضياً البيانات تأتي مرتبة)
         filtered = filtered.reverse();
         break;
       case "topRated":
-        // ترتيب بالأعلى تقييماً
         filtered = filtered.sort((a, b) => {
           const ratingA = (a.attributes || a)?.rating || 4.5;
           const ratingB = (b.attributes || b)?.rating || 4.5;
@@ -55,7 +49,6 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
         });
         break;
       case "bestseller":
-        // الأكثر مبيعاً (افتراضياً)
         filtered = filtered.sort((a, b) => {
           const salesA = (a.attributes || a)?.sales || 0;
           const salesB = (b.attributes || b)?.sales || 0;
@@ -65,16 +58,13 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
       default:
         break;
     }
-
     return filtered;
   }, [data, activeFilter]);
 
-  // ✅ عرض 8 كتب فقط في الصفحة الرئيسية
   const displayedBooks = isBooksPage
     ? filteredBooks
     : filteredBooks?.slice(0, 8);
 
-  // ✅ الفلاتر المتاحة
   const filters = [
     { id: "all", label: "الكل", icon: HiSparkles },
     { id: "newest", label: "الأحدث", icon: FaClock },
@@ -82,7 +72,21 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
     { id: "topRated", label: "الأعلى تقييماً", icon: FaStar },
   ];
 
-  // ===== Skeleton Loader =====
+  // ✅ Badge العداد - يتغير حسب الفلتر
+  const getBadgeText = () => {
+    const count = filteredBooks?.length || 0;
+    switch (activeFilter) {
+      case "newest":
+        return `🆕 ${count} كتاب جديد`;
+      case "bestseller":
+        return `🔥 ${count} الأكثر مبيعاً`;
+      case "topRated":
+        return `⭐ ${count} الأعلى تقييماً`;
+      default:
+        return `📚 ${count} كتاب`;
+    }
+  };
+
   const renderSkeletons = () => {
     return Array(8)
       .fill(0)
@@ -109,9 +113,9 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
       <div className="books-container">
         <div className="books-header">
           <SectionTitle
-            badge="جديد"
-            title="إصدارات الأسبوع"
-            subtitle="كتب مختارة لك"
+            badge="📚 جاري التحميل..."
+            title={customTitle || "أحدث الكتب"}
+            subtitle={customSubtitle || "اكتشف أحدث الإصدارات من مختلف المجالات"}
           />
         </div>
         <div className="books-grid">{renderSkeletons()}</div>
@@ -149,6 +153,7 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
     return (
       <div className="books-container">
         <SectionTitle
+          badge="📚 لا توجد كتب"
           title={customTitle || "أحدث الكتب"}
           subtitle={customSubtitle || "اكتشف أحدث الإصدارات من مختلف المجالات"}
         />
@@ -168,9 +173,10 @@ function Books({ showLoadMore = true, customTitle, customSubtitle }) {
   // ===== العرض الرئيسي =====
   return (
     <div className="books-container">
-      {/* Header مع العنوان */}
+      {/* ✅ Header مع Badge العداد */}
       <div className="books-header">
         <SectionTitle
+          badge={getBadgeText()}
           title={customTitle || "أحدث الكتب"}
           subtitle={customSubtitle || "اكتشف أحدث الإصدارات من مختلف المجالات"}
         />
